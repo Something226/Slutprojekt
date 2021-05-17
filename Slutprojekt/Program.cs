@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Slutprojekt
 {
@@ -6,21 +7,74 @@ namespace Slutprojekt
     {
         static void Main(string[] args)
         {
+            //Variables and lists/arrays
+            int PlayerGold = 15;
 
-            Intialtext();
+            string[] shopItemstrings = { "dagger", "potion", "sword", "armor" };
+            int[] shopItemcost = { 5, 3, 10, 5 };
+
+            List<string> playerItems = new List<string>();
+
+            //inital message
+            System.Console.WriteLine("Welcome to the shop\nWe have these items:");
+
+            //for-loop that prints available items
+            Printshopitems(shopItemstrings, shopItemcost);
+
+            //requests player input
+            System.Console.WriteLine("You have " + PlayerGold + " Gold, what would you like to buy? (Enter name of the item you want)");
+
+            //method for buying items
+            BuyItem(shopItemstrings, shopItemcost, playerItems);
 
             Console.ReadLine();
 
         }
 
-        static void Intialtext(){
+        static void BuyItem(string[] shopItemstrings, int[] shopItemcost, List<string> playerItems)
+        {
+            string item = Console.ReadLine();
+            item = item.ToLower();
 
-            System.Console.WriteLine("Hi, welcome to the shop!\nWhat Do you want to buy?");
+            for (int i = 0; i < shopItemstrings.Length; i++)
+            {
+                if (item == shopItemstrings[i])
+                {
+                    System.Console.WriteLine("Are you sure you want that?(Y/n)");
+
+                    string really = "";
+
+                    while (really != "y" || really != "n")
+                    {
+                        really = Console.ReadLine().ToLower();
+
+                        if (really == "y")
+                        {
+
+                        }
+                        else if (really == "n")
+                        {
+
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        static void Printshopitems(string[] shopItemstrings, int[] shopItemcost)
+        {
+            for (int i = 0; i < shopItemstrings.Length; i++)
+            {
+                if (shopItemcost[i] != -1)
+                {
+                    System.Console.WriteLine(shopItemstrings[i] + " = " + shopItemcost[i] + " Gold");
+                }
+            }
 
         }
 
-        static void Itemlist(){
-            
-        }
-    }   
+    }
+
 }
