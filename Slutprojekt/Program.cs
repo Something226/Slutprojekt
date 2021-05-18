@@ -7,7 +7,7 @@ namespace Slutprojekt
     {
         static void Main(string[] args)
         {
-            //Variables and lists/arrays
+            //Variables and lists/arrays 
             int PlayerGold = 15;
 
             string[] shopItemstrings = { "dagger", "potion", "sword", "armor" };
@@ -30,7 +30,7 @@ namespace Slutprojekt
             Console.ReadLine();
 
         }
-
+        //Buyitem method, used to remove and add items purchased by user
         static void BuyItem(string[] shopItemstrings, int[] shopItemcost, List<string> playerItems)
         {
             string item = Console.ReadLine();
@@ -44,18 +44,25 @@ namespace Slutprojekt
 
                     string really = "";
 
-                    while (really != "y" || really != "n")
+                    while (really != "y" && really != "n")
                     {
                         really = Console.ReadLine().ToLower();
 
-                        if (really == "y")
+                        if (really != "y" && really != "n")
                         {
-
+                            System.Console.WriteLine("Enter a valid answer");
                         }
-                        else if (really == "n")
-                        {
 
-                        }
+                    }
+
+                    if(really == "y")
+                    {
+                        System.Console.WriteLine("cool");
+                    }
+
+                    if(really == "n")
+                    {
+                        System.Console.WriteLine("cool");
                     }
 
                 }
@@ -63,6 +70,7 @@ namespace Slutprojekt
             }
         }
 
+        //For-loop method, prints arrays
         static void Printshopitems(string[] shopItemstrings, int[] shopItemcost)
         {
             for (int i = 0; i < shopItemstrings.Length; i++)
