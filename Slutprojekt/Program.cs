@@ -16,7 +16,7 @@ namespace Slutprojekt
             List<string> playerItems = new List<string>();
 
             //inital message
-            System.Console.WriteLine("Welcome to the shop\nWe have these items:");
+            System.Console.WriteLine("Welcome to the shop\nWe have these items:"); 
 
             //for-loop that prints available items
             Printshopitems(shopItemstrings, shopItemcost);
@@ -46,25 +46,25 @@ namespace Slutprojekt
                 {
                     System.Console.WriteLine("Are you sure you want that?(Y/n)");
 
-                    string really = "";
+                    string answer = "";
 
-                    while (really != "y" && really != "n")
+                    while (answer != "y" && answer != "n")
                     {
-                        really = Console.ReadLine().ToLower();
+                        answer = Console.ReadLine().ToLower();
 
-                        if (really != "y" && really != "n")
+                        if (answer != "y" && answer != "n")
                         {
                             System.Console.WriteLine("Enter a valid answer");
                         }
 
                     }
 
-                    if(really == "y")
+                    if(answer == "y")
                     {
                         System.Console.WriteLine("cool");
                     }
 
-                    if(really == "n")
+                    if(answer == "n")
                     {
                         System.Console.WriteLine("cool");
                     }
