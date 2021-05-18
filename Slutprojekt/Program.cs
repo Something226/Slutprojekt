@@ -22,7 +22,7 @@ namespace Slutprojekt
             Printshopitems(shopItemstrings, shopItemcost);
 
             //requests player input
-            System.Console.WriteLine("You have " + PlayerGold + " Gold, what would you like to buy? (Enter name of the item you want)");
+            System.Console.WriteLine("You have " + PlayerGold + " Gold, what would you like to buy?");
 
             //method for buying items
             BuyItem(shopItemstrings, shopItemcost, playerItems);
@@ -32,10 +32,14 @@ namespace Slutprojekt
         }
         //Buyitem method, used to remove and add items purchased by user
         static void BuyItem(string[] shopItemstrings, int[] shopItemcost, List<string> playerItems)
-        {
+        {        
+            //player input prompt
+            System.Console.WriteLine("(Enter name of the item you want)");
+
             string item = Console.ReadLine();
             item = item.ToLower();
 
+            //for-loop, checks for item name
             for (int i = 0; i < shopItemstrings.Length; i++)
             {
                 if (item == shopItemstrings[i])
