@@ -8,31 +8,36 @@ namespace Slutprojekt
         static void Main(string[] args)
         {
             //Variables and lists/arrays 
-            int PlayerGold = 15;
 
-            string[] shopItemstrings = { "dagger", "potion", "sword", "armor" };
-            int[] shopItemcost = { 5, 3, 10, 5 };
+            List<string> shopItemstrings = new List<string>() { "dagger", "potion", "sword", "armor" };
+            // List<int> shopItemcost = new List<int>() { 5, 3, 10, 5 };
 
             List<string> playerItems = new List<string>();
 
             //inital message
-            System.Console.WriteLine("Welcome to the shop\nWe have these items:"); 
+            System.Console.WriteLine("Welcome to the shop\nWe have these items:");
 
             //for-loop that prints available items
-            Printshopitems(shopItemstrings, shopItemcost);
+            Printitems(shopItemstrings);
 
             //requests player input
-            System.Console.WriteLine("You have " + PlayerGold + " Gold, what would you like to buy?");
+            System.Console.WriteLine("What would you like to buy?");
 
             //method for buying items
-            BuyItem(shopItemstrings, shopItemcost, playerItems);
+            BuyItem(shopItemstrings, playerItems);
+
+            Printitems(shopItemstrings);
+
+            //list that shows player items
+            System.Console.WriteLine("Player has these items");
+            Printitems(playerItems);
 
             Console.ReadLine();
 
         }
         //Buyitem method, used to remove and add items purchased by user
-        static void BuyItem(string[] shopItemstrings, int[] shopItemcost, List<string> playerItems)
-        {        
+        static void BuyItem(List<string> shopItemstrings, List<string> playerItems)
+        {
             //player input prompt
             System.Console.WriteLine("(Enter name of the item you want)");
 
@@ -40,7 +45,7 @@ namespace Slutprojekt
             item = item.ToLower();
 
             //for-loop, checks for item name
-            for (int i = 0; i < shopItemstrings.Length; i++)
+            for (int i = 0; i < shopItemstrings.Count; i++)
             {
                 if (item == shopItemstrings[i])
                 {
@@ -59,12 +64,16 @@ namespace Slutprojekt
 
                     }
 
-                    if(answer == "y")
+                    if (answer == "y")
                     {
-                        System.Console.WriteLine("cool");
+
+                        shopItemstrings.Remove(item);
+
+                        playerItems.Add(item);
+
                     }
 
-                    if(answer == "n")
+                    if (answer == "n")
                     {
                         System.Console.WriteLine("cool");
                     }
@@ -74,15 +83,13 @@ namespace Slutprojekt
             }
         }
 
-        //For-loop method, prints arrays
-        static void Printshopitems(string[] shopItemstrings, int[] shopItemcost)
+        //For-loop method, prints lists
+        static void Printitems(List<string> list)
         {
-            for (int i = 0; i < shopItemstrings.Length; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                if (shopItemcost[i] != -1)
-                {
-                    System.Console.WriteLine(shopItemstrings[i] + " = " + shopItemcost[i] + " Gold");
-                }
+                System.Console.WriteLine(list[i]);
+
             }
 
         }
